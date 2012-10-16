@@ -2,6 +2,11 @@ $LOAD_PATH << File.dirname(__FILE__) + "/.."
 $LOAD_PATH << File.dirname(__FILE__) + "/../lib"
 require 'test/unit'
 require 'encrypted_attributes'
+require 'encrypted_attributes/test_helpers'
+
+class Test::Unit::TestCase
+  include EncryptedAttributes::TestHelpers
+end
 
 TEST_KEY = OpenSSL::PKey::RSA.new(2048)
 
