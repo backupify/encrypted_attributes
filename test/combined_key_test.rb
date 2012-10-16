@@ -1,11 +1,10 @@
 require 'test/test_helper'
 
-class EncryptedAttributesTest < Test::Unit::TestCase
+class CombinedKeyTest < Test::Unit::TestCase
 
   def setup
     TestModel.class_eval do
-      encrypt :secret, :public => TEST_KEY,
-                       :private => TEST_KEY
+      encrypt :secret, :key => TEST_KEY
     end
     @model = TestModel.new
   end

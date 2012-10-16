@@ -6,6 +6,11 @@ module EncryptedAttributes
   def encrypt(*attributes, options)
     public_key = options[:public]
     private_key = options[:private]
+    combined_key = options[:key]
+    if combined_key
+      public_key = combined_key
+      private_key = combined_key
+    end
 
     attributes.each do |attribute|
       raw_attribute_getter = :"raw_#{attribute}"
