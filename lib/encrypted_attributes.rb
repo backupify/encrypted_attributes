@@ -19,15 +19,13 @@ module EncryptedAttributes
         if decoded_attribute.nil? || decoded_attribute.empty?
           ""
         else
-          decrypting_key = (private_key.respond_to?(:call) ? private_key.call : private_key)
-          decrypting_key.private_decrypt(decoded_attribute)
+          private_key.private_decrypt(decoded_attribute)
         end
       end
 
       define_method("#{attribute}=") do |new_value|
         new_value = "" if new_value.nil?
-        encrypting_key = (public_key.respond_to?(:call) ? public_key.call : public_key)
-        encrypted_value = encrypting_key.public_encrypt(new_value)
+        encrypted_value = public_key.public_encrypt(new_value)
         encoded_value = Base64.encode64(encrypted_value)
         write_attribute(attribute, encoded_value)
       end
