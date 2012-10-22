@@ -27,4 +27,10 @@ class CombinedKeyTest < Test::Unit::TestCase
     assert_equal "1234", @model.secret
   end
 
+  def test_allows_nil_values
+    @model.secret = nil
+    assert_nil @model.secret
+    assert_nil @model.raw_secret
+  end
+
 end
