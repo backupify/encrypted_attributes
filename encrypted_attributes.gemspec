@@ -16,4 +16,7 @@ Gem::Specification.new do |gem|
   gem.version       = EncryptedAttributes::VERSION
 
   gem.add_development_dependency("rake")
+  gem.add_development_dependency("ci_reporter")
+  gem.add_development_dependency("simplecov")
+  gem.add_development_dependency("simplecov-rcov")
 end

@@ -1,5 +1,15 @@
 $LOAD_PATH << File.dirname(__FILE__) + "/.."
 $LOAD_PATH << File.dirname(__FILE__) + "/../lib"
+
+if ENV['CI']
+  puts "Enabling simplecov(rcov) for jenkins"
+  require 'simplecov'
+  require 'simplecov-rcov'
+  SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
+  SimpleCov.start
+end
+
+
 require 'test/unit'
 require 'encrypted_attributes'
 require 'encrypted_attributes/test_helpers'
